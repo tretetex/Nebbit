@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="shortcut icon" href="img/icon.png" type="image/png">
+    <title>Nebbit</title>
+</head>
+
+<body>
+
+    <div class="text-center error">
+        <div class="noExtension" hidden>
+            Please install
+            <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet" target="_blank">WebExtensionWallet</a> to use application
+        </div>
+        <div class="noExtensionLogin" hidden>
+            Please login in WebExtensionWallet with Mainnet
+        </div>
+    </div>
+
+    <header>
+        <div class="container d-flex justify-content-between align-items-center">
+            <nav class="d-flex justify-content-start align-items-center">
+                <a id="logo" href="" class="d-flex align-items-center">Nebbit</a>
+                <a href="#" id="loadTopPosts">Top</a>
+                <a href="">New</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content d-flex justify-content-center ml-auto mr-auto">
+
+        <div class="posts">
+            <br>
+            <br>
+            <div style='color: #8a9098' class='d-flex justify-content-center'>Loading...</div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-block">
+                <div class="sidebar-block__header" id="accountAddress">
+                    loading...
+                </div>
+                <div class="sidebar-block__content">
+                    <div class="profile-info__item">
+                        <span class="profile-info__label" id="postsCount">0</span>
+                        <span class="profile-info__hint">posts</span>
+                    </div>
+                    <div class="profile-info__item">
+                        <span class="profile-info__label" id="donationsCount">0</span>
+                        <span class="profile-info__hint">donations</span>
+                    </div>
+                </div>
+                <div class="sidebar-block__content sidebar-block__content_hr menu menu_vertical">
+                    <a class="menu__item" id="loadMyPosts" href="#">My posts</a>
+                    <a class="menu__item" id="loadMyVotes" href="#">Votes</a>
+                </div>
+            </div>
+
+            <a href="#" class="add-post-btn" data-toggle="modal" data-target="#createPostModal">
+                <svg xmlns="http://www.w3.org/2000/svg">
+                    <use xlink:href="#icon--ui__plus">
+                        <svg id="icon--ui__plus" viewBox="0 0 10 10" width="100%" height="100%">
+                            <path d="M10 5.715H5.71V10H4.285V5.715H0v-1.43h4.285V0H5.71v4.285H10v1.43z" fill-rule="evenodd"></path>
+                        </svg>
+                    </use>
+                </svg>
+                <span>Create post</span>
+            </a>
+
+            <div class="img img ml-auto mr-auto"></div>
+            <div class="info text-center">Share your story</div>
+        </div>
+    </div>
+
+    <!-- Modal Create Post-->
+    <div class="modal fade" id="createPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h7 class="modal-title">Create new post</h7>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="createPost">
+                        <div class="form-group form-control-sm">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control form-control-sm" id="title" placeholder="Your title" required maxlength="300">
+                        </div>
+                        <div class="form-group form-control-sm">
+                            <label for="message">Message</label>
+                            <textarea type="text" class="form-control form-control-sm" id="message" rows="8" placeholder="Your message" required maxlength="1000"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" form="createPost">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bignumber.js/7.0.1/bignumber.min.js"></script>
+
+    <script src="lib/nebPay.js"></script>
+    <script src="js/contract.api.js"></script>
+    <script src="js/utilities.js"></script>
+    <script src="js/post.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let apiClient = new SocialContractApi();
+        let isExtensionExist;
+
+        window.addEventListener("load", function () {
+            isExtensionExist = typeof (webExtensionWallet) !== "undefined";
+            if (!isExtensionExist) {
+                document.querySelector(".noExtension").attributes.removeNamedItem("hidden");
+            } else {
+                updateInfo();
+                loadPosts();
+            }
+        });
+
+        window.addEventListener('message', function (e) {
+            if (e.data.data && !!e.data.data.account) {
+                document.getElementById("accountAddress").innerHTML = e.data.data.account;
+            }
+        });
+
+        setInterval(function () {
+            updateInfo();
+        }, 10000);
+
+        $('#faqModal').on('show.bs.modal', onModalShowHandler);
+
+        function onModalShowHandler(event) {
+            let button = $(event.relatedTarget);
+            let modal = $(this);
+        }
+    </script>
+
+
+</body>
+
+</html>
